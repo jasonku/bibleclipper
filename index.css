@@ -1,0 +1,23 @@
+#jumbotron {
+  padding: 20px 20px 20px 35px;
+}
+
+#passage-search {
+  height: 50px;
+  width: 99%;
+}
+
+#passage-template {
+  display: none;
+}
+
+.passage-text {
+  font-size: 16px;
+  color: green;
+  font-weight: bold;
+}
+
+.old-passage {
+  color: #bbb;
+  font-weight: normal;
+}
