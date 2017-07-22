@@ -15,6 +15,11 @@
   width: 99%;
 }
 
+#submit-button {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px
+}
+
 #passage-template {
   display: none;
 }
