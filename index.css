@@ -2,15 +2,11 @@
   padding: 20px 20px 20px 35px;
 }
 
-#copied-success {
+.alert {
   display: none;
 }
 
-#copied-error {
-  display: none;
-}
-
-.copied-reference {
+.copied-reference, .query-attempt {
   font-weight: bold;
 }
 

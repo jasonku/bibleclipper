@@ -88,6 +88,13 @@ window.onload = function () {
     e.preventDefault();
     var query = passageSearchField.val();
 
+    function showQueryError() {
+      $('#query-error').fadeOut(200, function complete() {
+        $('.query-attempt').text(query);
+        $('#query-error').fadeIn(200);
+      });
+    }
+
     var request = $.ajax({
       //url: "http://nasb.literalword.com",
       url: "http://localhost:3000",
@@ -98,13 +105,24 @@ window.onload = function () {
       },
       async: false, // Otherwise copy to clipboard won't work: https://stackoverflow.com/questions/31925944/execcommandcopy-does-not-work-in-xhr-callback
       success: function (data) {
+        $('.alert').hide();
         var reference;
         var text;
         $.each(data, function (key, value) {
           reference = key;
-          text = key + ' ' + value;
+          text = value;
         });
 
+        passageSearchField
+          .val("")
+          .focus();
+
+        if (text.length === 0) {
+          showQueryError();
+          return;
+        }
+
+        var combo = reference + ' ' + text
         $('#passages .passage-text').addClass('old-passage');
 
         var template = $("#passage-template");
@@ -114,16 +132,21 @@ window.onload = function () {
 
         passage
           .find(".passage-text")
-          .text(text)
+          .text(combo)
 
         passage
           .prependTo("#passages");
 
-        copyTextToClipboard(reference, text);
+        copyTextToClipboard(reference, combo);
+      },
+      error: function (jqXHR, textStatus, err) {
+        $('.alert').hide();
 
         passageSearchField
           .val("")
           .focus();
+
+        showQueryError();
       },
     });
     console.log('Submitted search for ' + query);
