@@ -13,6 +13,7 @@ window.onload = function () {
 
   // https://stackoverflow.com/a/30810322
   function copyTextToClipboard(reference, text) {
+    $('.alert').hide();
     var textArea = document.createElement("textarea");
 
     //
@@ -105,7 +106,6 @@ window.onload = function () {
       },
       async: false, // Otherwise copy to clipboard won't work: https://stackoverflow.com/questions/31925944/execcommandcopy-does-not-work-in-xhr-callback
       success: function (data) {
-        $('.alert').hide();
         var reference;
         var text;
         $.each(data, function (key, value) {
@@ -130,9 +130,14 @@ window.onload = function () {
         var passage = template.clone()
           .removeAttr('id');
 
+        var passageClickHandler = function (e) {
+          copyTextToClipboard(reference, combo);
+        };
+
         passage
           .find(".passage-text")
           .text(combo)
+          .click(passageClickHandler);
 
         passage
           .prependTo("#passages");
