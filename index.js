@@ -1,7 +1,15 @@
 window.onload = function () {
-  console.log('yo');
   var passageSearchField = $("#passage-search");
   passageSearchField.focus();
+
+  document.onkeypress = function(evt) {
+     evt = evt || window.event;
+     var charCode = evt.which || evt.keyCode;
+     var charStr = String.fromCharCode(charCode);
+     if (/[a-z0-9]/i.test(charStr) && !passageSearchField.is(":focus")) {
+       passageSearchField.focus();
+     }
+  };
 
   $("#close-jumbotron").click(function () {
     $("#jumbotron").fadeOut();
