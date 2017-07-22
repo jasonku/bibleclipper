@@ -28,6 +28,14 @@
         <p>Look up and copy Scripture straight into your clipboard.</p>
       </div>
 
+      <div class="alert alert-success" id="copied-success" role="alert">
+        Copied <span class="copied-reference"></span> to clipboard!
+      </div>
+
+      <div class="alert alert-danger" id="copied-error" role="alert">
+        Error copying <span class="copied-reference"></span> to clipboard :(
+      </div>
+
       <form id="search">
         <div class="form-group input-group">
           <input type="text" class="form-control" id="passage-search" placeholder='Search for passage ("1 pet 3:15")'>
@@ -62,9 +70,6 @@
       </nav>
     </footer>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="index.js"></script>
