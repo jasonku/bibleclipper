@@ -97,8 +97,7 @@ window.onload = function () {
     }
 
     var request = $.ajax({
-      //url: "http://nasb.literalword.com",
-      url: "http://localhost:3000",
+      url: "http://nasb.literalword.com",
       method: "GET",
       data: {
         q: query,
