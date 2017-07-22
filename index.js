@@ -94,6 +94,10 @@ window.onload = function () {
         $('.query-attempt').text(query);
         $('#query-error').fadeIn(200);
       });
+
+      passageSearchField
+        .val("")
+        .focus();
     }
 
     var request = $.ajax({
@@ -111,10 +115,6 @@ window.onload = function () {
           reference = key;
           text = value;
         });
-
-        passageSearchField
-          .val("")
-          .focus();
 
         if (text.length === 0) {
           showQueryError();
@@ -142,13 +142,14 @@ window.onload = function () {
           .prependTo("#passages");
 
         copyTextToClipboard(reference, combo);
-      },
-      error: function (jqXHR, textStatus, err) {
-        $('.alert').hide();
 
         passageSearchField
           .val("")
           .focus();
+
+      },
+      error: function (jqXHR, textStatus, err) {
+        $('.alert').hide();
 
         showQueryError();
       },
