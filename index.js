@@ -11,10 +11,6 @@ window.onload = function () {
      }
   };
 
-  $("#close-jumbotron").click(function () {
-    $("#jumbotron").fadeOut();
-  });
-
   $("#search").submit(function (e) {
     e.preventDefault();
     var query = passageSearchField.val();
