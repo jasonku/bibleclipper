@@ -7,14 +7,6 @@
   height: auto;
 }
 
-.alert {
-  display: none;
-}
-
-.copied-reference, .query-attempt {
-  font-weight: bold;
-}
-
 #passage-search {
   height: 50px;
   width: 99%;

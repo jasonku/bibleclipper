@@ -1,3 +1,20 @@
+toastr.options = {
+  closeButton: false,
+  debug: false,
+  newestOnTop: false,
+  progressBar: false,
+  positionClass: "toast-bottom-right",
+  preventDuplicates: false,
+  showDuration: "300",
+  hideDuration: "1000",
+  timeOut: "5000",
+  extendedTimeOut: "1000",
+  showEasing: "swing",
+  hideEasing: "linear",
+  showMethod: "fadeIn",
+  hideMethod: "fadeOut",
+}
+
 window.onload = function () {
   var passageSearchField = $("#passage-search");
   passageSearchField.focus();
@@ -13,7 +30,6 @@ window.onload = function () {
 
   // https://stackoverflow.com/a/30810322
   function copyTextToClipboard(reference, text) {
-    $('.alert').hide();
     var textArea = document.createElement("textarea");
 
     //
@@ -59,22 +75,18 @@ window.onload = function () {
     textArea.select();
 
     function showError() {
-      $('#copied-error').fadeOut(200, function complete() {
-        $('.copied-reference').text(reference);
-        $('#copied-error').fadeIn(200);
-      });
+      toastr.error('Error copying ' + reference + ' to clipboard :(');
     }
 
     try {
       var successful = document.execCommand('copy');
       if (successful) {
         console.log('Copy succeeded.');
-        $('#copied-success').fadeOut(200, function complete() {
-          $('.copied-reference').text(reference);
-          $('#copied-success').fadeIn(200);
-        });
+
+        toastr.success('Copied ' + reference + ' to clipboard!');
       } else {
         console.log('Copy failed.');
+
         showError();
       }
     } catch (err) {
@@ -95,10 +107,7 @@ window.onload = function () {
     var query = passageSearchField.val();
 
     function showQueryError() {
-      $('#query-error').fadeOut(200, function complete() {
-        $('.query-attempt').text(query);
-        $('#query-error').fadeIn(200);
-      });
+      toastr.error('Error looking up "' + query + '".');
 
       passageSearchField
         .val("")
@@ -155,8 +164,6 @@ window.onload = function () {
         $(window).scrollTop(0);
       },
       error: function (jqXHR, textStatus, err) {
-        $('.alert').hide();
-
         showQueryError();
       },
       complete: placePassages,
