@@ -85,6 +85,11 @@ window.onload = function () {
     document.body.removeChild(textArea);
   }
 
+  var placePassages = function () {
+    var passagesPlacement = $('.jumbotron').position().top + $('.jumbotron').height() + 60;
+    $('#passages').css('margin-top', passagesPlacement);
+  };
+
   $("#search").submit(function (e) {
     e.preventDefault();
     var query = passageSearchField.val();
@@ -153,8 +158,13 @@ window.onload = function () {
 
         showQueryError();
       },
+      complete: placePassages,
     });
     console.log('Submitted search for ' + query);
+  });
+
+  $(window).resize(function () {
+    placePassages();
   });
 };
 

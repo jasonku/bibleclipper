@@ -1,5 +1,10 @@
 .jumbotron {
   padding: 20px 20px 20px 35px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  position: fixed;
+  height: auto;
 }
 
 .alert {
@@ -22,6 +27,9 @@
 
 #passage-template {
   display: none;
+}
+
+#passages {
 }
 
 .passage {
@@ -53,7 +61,7 @@ body {
   margin-bottom: 60px;
 }
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */

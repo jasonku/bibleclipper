@@ -26,28 +26,28 @@
       <div class="jumbotron">
         <h3>bibleclipper</h3>
         <p>Look up and copy Scripture straight into your clipboard.</p>
-      </div>
 
-      <div class="alert alert-success" id="copied-success" role="alert">
-        Copied <span class="copied-reference"></span> to clipboard!
-      </div>
+        <form id="search">
+          <div class="form-group input-group">
+            <input type="text" class="form-control" id="passage-search" placeholder='Search for passage ("1 pet 3:15")'>
+            <span class="input-group-btn">
+              <button type="submit" class="btn btn-primary" id="submit-button">Submit</button>
+            </span>
+          </div>
+        </form>
 
-      <div class="alert alert-danger" id="copied-error" role="alert">
-        Error copying <span class="copied-reference"></span> to clipboard :(
-      </div>
-
-      <div class="alert alert-danger" id="query-error" role="alert">
-        Error looking up <span class="query-attempt">that passage</span>.
-      </div>
-
-      <form id="search">
-        <div class="form-group input-group">
-          <input type="text" class="form-control" id="passage-search" placeholder='Search for passage ("1 pet 3:15")'>
-          <span class="input-group-btn">
-            <button type="submit" class="btn btn-primary" id="submit-button">Submit</button>
-          </span>
+        <div class="alert alert-success" id="copied-success" role="alert">
+          Copied <span class="copied-reference"></span> to clipboard!
         </div>
-      </form>
+
+        <div class="alert alert-danger" id="copied-error" role="alert">
+          Error copying <span class="copied-reference"></span> to clipboard :(
+        </div>
+
+        <div class="alert alert-danger" id="query-error" role="alert">
+          Error looking up <span class="query-attempt">that passage</span>.
+        </div>
+      </div>
 
       <div id="passages">
       </div>
