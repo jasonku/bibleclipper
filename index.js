@@ -152,6 +152,7 @@ window.onload = function () {
           .val("")
           .focus();
 
+        $(window).scrollTop(0);
       },
       error: function (jqXHR, textStatus, err) {
         $('.alert').hide();
