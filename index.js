@@ -168,7 +168,10 @@ window.onload = function () {
       },
       complete: placePassages,
     });
+
     console.log('Submitted search for ' + query);
+
+    ga('send', 'event', 'Passage', 'search', query);
   });
 
   $(window).resize(function () {
