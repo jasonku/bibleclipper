@@ -2,4 +2,4 @@
 
 [Look up and copy Scripture snippets straight into your clipboard.](http://www.bibleclipper.com)
 
-![demo](https://user-images.githubusercontent.com/318214/28494879-fab4ddfc-6ef0-11e7-9855-335601c702cf.gif)
+![demo](https://user-images.githubusercontent.com/318214/28504438-eeac2e4e-6fcb-11e7-88ff-24c64400c8e7.gif)
