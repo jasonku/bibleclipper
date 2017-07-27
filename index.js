@@ -19,14 +19,43 @@ window.onload = function () {
   var passageSearchField = $("#passage-search");
   passageSearchField.focus();
 
-  document.onkeypress = function(evt) {
+  var queries = [];
+  var queryIndex;
+
+  document.onkeypress = function (evt) {
      evt = evt || window.event;
      var charCode = evt.which || evt.keyCode;
+
      var charStr = String.fromCharCode(charCode);
      if (/[a-z0-9]/i.test(charStr) && !passageSearchField.is(":focus")) {
        passageSearchField.focus();
      }
+
   };
+
+  document.onkeydown = function (evt) {
+     evt = evt || window.event;
+
+     if ((evt.keyCode === 38 || evt.keyCode === 40) && queries.length > 0) {
+       evt.preventDefault();
+
+       if (queryIndex === undefined) {
+         queryIndex = queries.length - 1;
+       } else {
+         if (evt.keyCode === 38 && queryIndex > 0) {
+           queryIndex = queryIndex - 1;
+         }
+         if (evt.keyCode === 40 && queryIndex < queries.length - 1) {
+           queryIndex = queryIndex + 1;
+         }
+       }
+
+       query = queries[queryIndex];
+
+       passageSearchField.focus();
+       passageSearchField.val(query);
+     }
+  }
 
   // https://stackoverflow.com/a/30810322
   function copyTextToClipboard(reference, text) {
@@ -105,6 +134,9 @@ window.onload = function () {
   $("#search").submit(function (e) {
     e.preventDefault();
     var query = passageSearchField.val();
+
+    queries.push(query);
+    queryIndex = undefined;
 
     function showQueryError() {
       toastr.error('Error looking up "' + query + '".');
