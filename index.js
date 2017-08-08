@@ -19,7 +19,7 @@ window.onload = function () {
   var passageSearchField = $("#passage-search");
   passageSearchField.focus();
 
-  var queries = [];
+  var queries = [''];
   var queryIndex;
 
   document.onkeypress = function (evt) {
@@ -40,7 +40,7 @@ window.onload = function () {
        evt.preventDefault();
 
        if (queryIndex === undefined) {
-         queryIndex = queries.length - 1;
+         queryIndex = queries.length - 2;
        } else {
          if (evt.keyCode === 38 && queryIndex > 0) {
            queryIndex = queryIndex - 1;
@@ -135,7 +135,7 @@ window.onload = function () {
     e.preventDefault();
     var query = passageSearchField.val();
 
-    queries.push(query);
+    queries.splice(queries.length - 1, 0, query);
     queryIndex = undefined;
 
     function showQueryError() {
