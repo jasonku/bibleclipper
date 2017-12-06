@@ -12,6 +12,19 @@
   width: 99%;
 }
 
+#translation {
+  font-size: 16px;
+}
+
+#nasb, #esv {
+  cursor: pointer;
+}
+
+.selected-translation {
+  color: #337ab7;
+  font-weight: bold;
+}
+
 #passage-template {
   display: none;
 }

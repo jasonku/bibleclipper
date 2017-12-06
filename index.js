@@ -22,6 +22,25 @@ window.onload = function () {
   var queries = [''];
   var queryIndex;
 
+  var markAsSelected = function (element) {
+    $('.translation-option').removeClass('selected-translation');
+    $(element).addClass('selected-translation');
+  }
+
+  var translationSelectionHandler = function (e) {
+    translation = e.target.id;
+    window.localStorage.setItem('bibleclipperTranslation', translation);
+
+    markAsSelected(e.target);
+  }
+
+  $('.translation-option')
+    .on('click', translationSelectionHandler);
+
+  var translation = window.localStorage.getItem('bibleclipperTranslation') || 'nasb';
+
+  markAsSelected($('#' + translation));
+
   document.onkeypress = function (evt) {
      evt = evt || window.event;
      var charCode = evt.which || evt.keyCode;
@@ -147,7 +166,7 @@ window.onload = function () {
     }
 
     var request = $.ajax({
-      url: "http://nasb.literalword.com",
+      url: "http://" + translation + ".literalword.com",
       method: "GET",
       data: {
         q: query,
