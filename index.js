@@ -185,7 +185,7 @@ window.onload = function () {
     }
 
     var request = $.ajax({
-      url: "https://" + translation + ".literalword.com",
+      url: "http://" + translation + ".literalword.com",
       method: "GET",
       data: {
         q: query,
